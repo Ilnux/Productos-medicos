@@ -1,0 +1,29 @@
+<div class="container text-center p-5 animate__animated animate__fadeIn">
+  <div class="row">
+    <!--    titulo-->
+    <div class="col col-sm-12 mt-2">
+      <span class="p-3 pb-5 fuentePrincipal" style="font-size: 60px">Productos medicos</span>
+    </div>
+  </div>
+
+  <!--  registro-->
+  <div class="row pt-5 ">
+    <div class="col col-sm-4 offset-sm-2 brder pt-4 mr-1">
+      <img routerLink="/registro" [ngClass]="eventoRegistro" (mouseover)="evento('registro')"
+           src="assets/img/registrar.svg"
+           alt="registrar"
+           id="imgRegistro" class="imagen img-fluid btn">
+      <a routerLink="/registro" class=" btn btn-outline-light text-dark btn-block mt-3" type="button"><span class="fuentePrincipal"
+                                                                         style="font-size: 30px;"><strong>Registrar producto</strong></span></a>
+    </div>
+
+    <!--    consultar-->
+    <div class="col col-sm-4 pt-4  ml-1">
+      <img routerLink="/consulta" [ngClass]="eventoConsulta" (mouseover)="evento('consultar')"
+           src="assets/img/consultar.svg" alt="consultar"
+           id="imgConsulta" class="btn img-fluid animate__animated">
+      <a routerLink="/consulta" class="btn btn-outline-light text-dark btn-block mt-3" type="button"><span class="fuentePrincipal"
+                                                                                       style="font-size: 30px;"><strong>Consultar producto</strong></span></a>
+    </div>
+  </div>
+</div>

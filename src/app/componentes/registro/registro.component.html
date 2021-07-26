@@ -1,0 +1,119 @@
+<div class="container p-5 animate__animated animate__fadeIn animate__slow">
+
+  <div class="row text-center">
+    <div class="col col-sm-12">
+      <a routerLink="menu" class="btn btn-outline-dark ">
+        <span class="fuentePrincipal" style="font-size: 20px">
+          <Strong>
+            <em class="fas fa-angle-left"></em> Atras
+          </Strong>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row text-center pt-5">
+    <div class="col col-sm-12">
+      <span class="fuentePrincipal" style="font-size: 50px">
+        Registro de productos
+      </span>
+    </div>
+  </div>
+
+  <!--formulario-->
+  <form
+    [formGroup]="formRegistro"
+    (ngSubmit)="guardar()"
+    autocomplete="off">
+    <div class="row p-4  text-center">
+      <div class="col col-sm-4 offset-sm-2">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">inventory_2</mat-icon>
+            Producto medico
+          </mat-label>
+          <mat-select formControlName="productoMedico">
+            <mat-option *ngFor="let referencia of referenciaLista"
+                        [value]="referencia.referencia_producto">{{referencia.nombre_producto}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col col-sm-4 mt-2">
+        <a (click)="ocultarReferencia = !ocultarReferencia" class="btn btn-outline-dark" style="font-size: 12px">
+          <em class="fas fa-plus"></em> Agregar referencia
+        </a>
+      </div>
+    </div>
+
+    <div *ngIf="ocultarReferencia" class="row p-4">
+      <div class="col col-sm-3">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">tag</mat-icon>
+            referencia
+          </mat-label>
+          <input matInput formControlName="numeroReferencia">
+        </mat-form-field>
+      </div>
+
+      <div class="col col-sm-3">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">inventory_2</mat-icon>
+            Nombre producto
+          </mat-label>
+          <input matInput formControlName="nombreProducto">
+        </mat-form-field>
+      </div>
+
+      <div class="col col-sm-3">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">science</mat-icon>
+            Nombre laboratorio
+          </mat-label>
+          <input matInput formControlName="nombreLaboratorio">
+        </mat-form-field>
+      </div>
+
+      <div class="col col-sm-3">
+        <a
+          (click)="guardarReferencia()"
+          class="btn btn-outline-primary mt-2" style="font-size: 12px">
+          <em class="fas fa-save"></em> Guardar referencia
+        </a>
+      </div>
+    </div>
+
+    <div class="row p-4 text-center">
+      <div class="col col-sm-4 offset-sm-2">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>
+            fecha de vencimiento
+          </mat-label>
+          <input matInput [matDatepicker]="picker" [min]="fechaMinima" formControlName="fechaVencimiento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col col-sm-4">
+        <mat-form-field appearance="legacy">
+          <mat-label>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add_chart</mat-icon>
+            Cantidad (mg)
+          </mat-label>
+          <input type="number" matInput formControlName="cantidad">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col col-sm-4 offset-sm-4">
+        <button class="btn btn-outline-primary" style="font-size: 12px" type="submit">
+          <em class="fas fa-save"></em> Agregar producto
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,150 @@
+<div class="container p-5 animate__animated animate__fadeIn animate__slow">
+
+  <div class="row text-center">
+    <div class="col col-sm-12">
+      <a routerLink="menu" class="btn btn-outline-dark ">
+        <span class="fuentePrincipal" style="font-size: 20px">
+          <Strong>
+            <em class="fas fa-angle-left"></em> Atras
+          </Strong>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row text-center pt-5">
+    <div class="col col-sm-12">
+      <span class="fuentePrincipal" style="font-size: 50px">
+        Consulta de productos
+      </span>
+    </div>
+  </div>
+  <form
+    [formGroup]="formConsulta"
+    (ngSubmit)="actualizar()" autocomplete="off">
+    <div class="row  p-4 text-center">
+      <div class="col col-sm-3 offset-sm-3 ">
+        <mat-form-field class="example-full-width" appearance="legacy">
+          <mat-label>
+            fecha de ingreso
+          </mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fechaIngreso">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col col-sm-3 mt-2">
+        <a class="btn btn-outline-dark" style="font-size: 12px" (click)="consultar()">
+          <em class="fas fa-search"></em> Consultar
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table" *ngIf="activarTabla">
+          <caption class="fuentePrincipal" style="font-size: 30px">Lista productos</caption>
+          <thead>
+          <tr>
+            <th scope="col">Referencia</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Laboratorio</th>
+            <th scope="col">Fecha de vencimiento</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acción</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let producto of listaProducto">
+            <th scope="row">{{producto.referencia_producto}}</th>
+            <td>{{producto.nombre_producto}}</td>
+            <td>{{producto.laboratorio_producto}}</td>
+            <td>{{producto.fecha_vencimiento_producto}}</td>
+            <td>{{producto.cantidad_producto}}(mg)</td>
+            <td>
+              <a class="btn btn-outline-secondary" (click)="enviarDatos(producto)">Actualizar</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--form actualizar-->
+    <div class="container" *ngIf="mostrarActualizar">
+      <div class="row text-center pb-5">
+        <div class="col"><span class="fuentePrincipal" style="font-size: 40px">Actualizar producto</span></div>
+      </div>
+      <div class="row">
+        <div class="col col-sm-4">
+          <mat-form-field appearance="legacy">
+            <mat-label>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">task</mat-icon>
+              Id producto
+            </mat-label>
+            <input matInput formControlName="idReferencia">
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-4">
+          <mat-form-field appearance="legacy">
+            <mat-label>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">tag</mat-icon>
+              Referencia
+            </mat-label>
+            <input matInput formControlName="numeroReferencia">
+          </mat-form-field>
+        </div>
+        <div class="col col-sm-4">
+          <mat-form-field appearance="legacy">
+            <mat-label>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">inventory_2</mat-icon>
+              Nombre referencia
+            </mat-label>
+            <input matInput formControlName="nombreReferencia">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-sm-4">
+          <mat-form-field appearance="legacy">
+            <mat-label>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">science</mat-icon>
+              Laboratorio
+            </mat-label>
+            <input matInput formControlName="laboratorio">
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-4">
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>
+              fecha de vencimiento
+            </mat-label>
+            <input matInput [matDatepicker]="picker1" [min]="fechaMinima" formControlName="fechaVenci">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-4">
+          <mat-form-field appearance="legacy">
+            <mat-label>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">add_chart</mat-icon>
+              Cantidad
+            </mat-label>
+            <input type="number" matInput formControlName="cantidad">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center" *ngIf="mostrarSubmit">
+      <div class="col col-sm-12">
+        <button type="submit" class="btn btn-outline-primary" style="font-size: 12px">Actualizar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
