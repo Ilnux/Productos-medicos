@@ -12,3 +12,7 @@ export interface ProductoInterface {
   fecha_vencimiento_producto: Date
   cantidad_producto: string;
 }
+
+export interface ProductoFechaInterface {
+  fecha_ingreso_producto: string;
+}

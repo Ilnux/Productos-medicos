@@ -1,1 +1,22 @@
-<p>calendario works!</p>
+<div class="container">
+  <div class="row text-center pt-3">
+    <div class="col col-sm-12">
+      <a routerLink="menu" class="btn btn-outline-dark ">
+        <span class="fuentePrincipal" style="font-size: 20px">
+          <Strong>
+            <em class="fas fa-angle-left"></em> Atras
+          </Strong>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row text-center pt-5">
+    <div class="col col-sm-12">
+      <span class="fuentePrincipal" style="font-size: 50px">
+        Productos registrados por dia
+      </span>
+    </div>
+  </div>
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>

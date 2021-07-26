@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProductoInterface, ReferenciaInterface} from "../interfaces/producto.interface";
+import {ProductoFechaInterface, ProductoInterface, ReferenciaInterface} from "../interfaces/producto.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class ProductosService {
 
   obtenerProductos(fecha: string | null): Observable<ProductoInterface[]> {
     return this.http.get<ProductoInterface[]>(`${this.URL}funcion=todos&fecha=${fecha}`);
+  }
+
+  obtenerFechasProductos(): Observable<ProductoFechaInterface[]> {
+    return this.http.get<ProductoFechaInterface[]>(`${this.URL}funcion=fechas&fecha=2021-07-13`);
   }
 
   registrarReferencia(numeroRef: string, nombreRef: string, laboratorioRef: string): Observable<any> {

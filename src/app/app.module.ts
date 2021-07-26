@@ -19,6 +19,19 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
 
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGrigPlugin from '@fullcalendar/timegrid';
+
+
+FullCalendarModule.registerPlugins([
+  interactionPlugin,
+  dayGridPlugin,
+  timeGrigPlugin
+]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +54,7 @@ import {DatePipe} from "@angular/common";
     MatNativeDateModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FullCalendarModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
